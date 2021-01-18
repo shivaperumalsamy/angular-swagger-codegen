@@ -2,8 +2,8 @@
   "name": "pets-store",
   "version": "0.0.0",
   "config": {
-    "swagger_definition": "/Users/sivanandhamp/Documents/Development/PlayGroundWorkspace/Architecture/swagger-generation/Pet/src/main/resources/pet-api.yaml",
-    "swagger_codegen_jar": "/Users/sivanandhamp/Documents/Development/soft/swagger/swagger-codegen-cli-3.0.9.jar"
+    "swagger_definition": "/tmp/pet-api.yaml",
+    "swagger_codegen_jar": "/tmp/swagger-codegen-cli-3.0.9.jar"
   },
   "scripts": {
     "ng": "ng",
