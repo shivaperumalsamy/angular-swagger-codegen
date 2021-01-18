@@ -7,7 +7,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ### Download Swagger Codegen CLI Jar
 
-The v3.0.9 jar can be downloaded from here: [swagger-codegen](https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.9/swagger-codegen-cli-3.0.9.jar). 
+The v3.0.9 jar can be downloaded from here: [swagger-codegen](https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.24/swagger-codegen-cli-3.0.24.jar). 
 
 ### Configure package.json
 
