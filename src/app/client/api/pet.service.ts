@@ -15,7 +15,7 @@ import { HttpClient, HttpHeaders, HttpParams,
          HttpResponse, HttpEvent }                           from '@angular/common/http';
 import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
-import { Observable }                                        from 'rxjs/Observable';
+import { Observable }                                        from 'rxjs';
 
 import { ErrorResponse } from '../model/errorResponse';
 import { Pet } from '../model/pet';
@@ -27,7 +27,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class PetService {
 
-    protected basePath = 'http://localhost:4200/api';
+    protected basePath = 'https://hostedurl.com/api';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
@@ -71,6 +71,14 @@ export class PetService {
 
         let headers = this.defaultHeaders;
 
+        // authentication (OAuth) required
+        if (this.configuration.accessToken) {
+            const accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers = headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
             'application/json'
@@ -89,9 +97,9 @@ export class PetService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.post<string>(`${this.basePath}/pets`,
-            body,
+        return this.httpClient.request<string>('post',`${this.basePath}/pets`,
             {
+                body: body,
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
@@ -113,6 +121,14 @@ export class PetService {
 
         let headers = this.defaultHeaders;
 
+        // authentication (OAuth) required
+        if (this.configuration.accessToken) {
+            const accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers = headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
             'application/json'
@@ -126,7 +142,7 @@ export class PetService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<Array<Pet>>(`${this.basePath}/pets`,
+        return this.httpClient.request<Array<Pet>>('get',`${this.basePath}/pets`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,

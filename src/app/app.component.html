@@ -1,6 +1,7 @@
 <h1>{{title}}</h1>
-<nav>
-  <a routerLink="/pets">Pets</a>
+<nav *ngIf="loggedIn">
+  <a routerLink="/pets" >Pets</a>
 </nav>
 <router-outlet></router-outlet>
-<!-- <app-messages></app-messages> -->
+<button mat-raised-button *ngIf="!loggedIn" (click)="login()">Login</button>
+<button mat-raised-button *ngIf="loggedIn" (click)="logout()">Logout</button>

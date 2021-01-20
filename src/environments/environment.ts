@@ -4,7 +4,12 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:4200/api'
+  apiUrl: 'http://localhost:4200/api',
+
+  // Azure AD details
+  clientId: '<add-client-id>',
+  authority: 'https://login.microsoftonline.com/<add-tenant-id>',
+  redirectUrl: 'http://localhost:4200'
 };
 
 /*
