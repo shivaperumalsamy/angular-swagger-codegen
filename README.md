@@ -7,7 +7,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ### Download Swagger Codegen CLI Jar
 
-The v3.0.9 jar can be downloaded from here: [swagger-codegen](https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.24/swagger-codegen-cli-3.0.24.jar). 
+The v3.0.24 jar can be downloaded from here: [swagger-codegen](https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.24/swagger-codegen-cli-3.0.24.jar). 
 
 ### Configure package.json
 
@@ -27,6 +27,14 @@ java -jar <swagger-jar-location> generate -i <swagger-yaml-location> -l typescri
 Eg:
 java -jar /tmp/swagger-codegen-cli-3.0.9.jar generate -i /tmp/pet-api.yaml -l typescript-angular -o src/app/client/
 ```
+
+### Swagger Codegen fix
+There is a problem with current codegen, add a following fix to avoid compile time issue
+
+navigate to /src/client/api.module.ts and update the following line
+```
+ModuleWithProviders { to ModuleWithProviders<ApiModule> {
+```
 # To run Angular...
 ## Development server
 
@@ -39,7 +47,3 @@ Added service URL in proxy-config.json, this should avoid CORS issue
 Follow my other repository to generate Java Spring Boot codegen using swagger
 
 https://github.com/sivagasc/java-spring-swagger-codegen
-
-
-
-
